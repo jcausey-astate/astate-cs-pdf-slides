@@ -1,0 +1,11 @@
+title: A-State CS Typst PDF Presentation
+author: Jason L. Causey
+version: 1.0.0
+quarto-required: ">=1.4.0"
+contributes:
+  formats:
+    typst:
+      template-partials:
+        - typst-template.typ
+        - typst-show.typ
+      keep-typ: false
