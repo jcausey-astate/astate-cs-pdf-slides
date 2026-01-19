@@ -58,7 +58,7 @@
   // Use sans-serif font
   set text(
     font: "Latin Modern Sans",
-    size: 24pt,
+    size: 21pt,
     fill: astate-black,
   )
 
