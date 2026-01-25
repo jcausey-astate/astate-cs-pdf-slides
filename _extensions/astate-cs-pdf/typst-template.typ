@@ -109,6 +109,9 @@
   // Math styling - use serif for math
   show math.equation: set text(font: "Latin Modern Math")
 
+  // Footnote styling - make text smaller
+  show footnote.entry: set text(size: 0.65em)
+
   // Paragraph settings
   set par(
     leading: 0.65em,
