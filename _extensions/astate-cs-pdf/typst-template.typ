@@ -1,17 +1,19 @@
 // A-State CS Typst Presentation Template
 
-// Official A-State color palette
+// Official A-State brand colors
 // Source: https://www.astate.edu/a/marketing/pcs/graphic-standards/
 #let astate-scarlet = rgb("#CC092F")  // Pantone 186 C - Official A-State Scarlet
-#let astate-red = astate-scarlet        // Alias for compatibility
+#let astate-red = astate-scarlet      // Alias for compatibility
 #let astate-black = rgb("#000000")    // Pantone Black 6 C - Official A-State Black
 #let astate-white = rgb("#FFFFFF")    // Official A-State White
+#let astate-gray = rgb("#6B6E6C")     // Preferred A-State grey
 
-// Secondary/accent colors (for design variation)
+// A-State scarlet variations for design emphasis
 #let astate-wine = rgb("#990022")     // Darker shade of scarlet for emphasis
-#let astate-lightred = rgb("#E64068") // Lighter accent (retained for bullet markers)
-#let astate-gray = rgb("#6B6E6C")     // Neutral gray for text/UI elements
-#let astate-blue = rgb("#16BECF")     // Accent color (if needed for diagrams/charts)
+#let astate-lightred = rgb("#E64068") // Lighter shade of scarlet for bullet markers
+
+// Custom slide colors (not A-State branded)
+#let slide-blue = rgb("#1A5490")      // Darker blue for diagrams/emphasis
 
 // Custom bullet markers - stacked rectangles 
 #let astate-bullet-1 = {
@@ -38,10 +40,52 @@
   })
 }
 
+// Callout box function (matches Quarto's built-in Typst callout signature)
+// Styled for A-State CS presentations
+#let callout(
+  body: [],
+  title: "Callout",
+  background_color: rgb("#dae6fb"),
+  icon: none,
+  icon_color: rgb("#0758E5"),
+  body_background_color: white
+) = {
+  block(
+    breakable: false,
+    width: 100%,
+    fill: background_color,
+    stroke: (left: 3pt + icon_color),
+    inset: 0pt,
+    radius: 3pt,
+    {
+      // Header
+      block(
+        width: 100%,
+        inset: (x: 0.8em, y: 0.5em),
+        [
+          #text(fill: icon_color, weight: "bold")[
+            #if icon != none [#icon ]
+            #title
+          ]
+        ]
+      )
+      // Body
+      if body != [] {
+        block(
+          width: 100%,
+          fill: body_background_color,
+          inset: (x: 0.8em, y: 0.6em),
+          body
+        )
+      }
+    }
+  )
+}
+
 #let template(
   title: none,
-  subtitle: none,
-  authors: (),
+  subtitle: none,      // Reserved for future use
+  authors: (),         // Reserved for future use
   date: none,
   course: none,
   decktitle: none,
@@ -76,7 +120,7 @@
   set list(
     marker: (astate-bullet-1, astate-bullet-2, astate-bullet-3, astate-bullet-3, astate-bullet-3),
     indent: 1em,
-    body-indent: 0.5em,
+    body-indent: 0.75em,
   )
 
   set enum(
@@ -84,14 +128,24 @@
     indent: 1em,
   )
 
-  // Strong and emphasis as alert color
-  show strong: set text(fill: astate-wine, weight: "bold")
-  show emph: set text(fill: astate-wine, weight: "bold")
+  // Regular emphasis (italic) - just make it italic, no color
+  show emph: it => text(style: "italic")[#it.body]
 
-  // Quote blocks - italic
+  // Regular bold - just make it bold, no color change
+  // Key terms (**_text_**) are handled by the keyterms.lua filter
+  show strong: it => text(weight: "bold")[#it.body]
+
+  // Quote blocks - styled with grey left bar and margins
   show quote.where(block: true): it => {
     set text(style: "italic")
-    pad(left: 1em, it)
+    block(
+      width: 100%,
+      inset: (left: 0.8em, right: 0.8em, y: 0.4em),
+      stroke: (left: 3pt + astate-gray),
+      {
+        pad(left: 0.5em, right: 1em, it.body)
+      }
+    )
   }
 
   // Level 2 and deeper headings - regular style

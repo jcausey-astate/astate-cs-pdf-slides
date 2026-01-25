@@ -8,4 +8,10 @@ contributes:
       template-partials:
         - typst-template.typ
         - typst-show.typ
+      filters:
+        - keyterms.lua
+        - columns.lua
+        - styled-divs.lua
+        - styled-spans.lua
+        - deflist.lua
       keep-typ: false
