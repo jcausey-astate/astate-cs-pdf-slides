@@ -237,21 +237,30 @@
 
       // Container for footer elements
       block(width: 100%, height: 2em, {
-        // Footer text positioned above progress bar
+        // Left-aligned title
         place(
-          right + top,
+          left + top,
           dy: 0.2em,
-          text(size: 13pt, fill: astate-gray, {
+          text(size: 11pt, fill: astate-gray, {
             if course != none {
               course
-              h(0.3em)
+              h(0.25em)
+              sym.bullet
+              h(0.25em)
             }
             if decktitle != none {
               decktitle
             } else if title != none {
               title
             }
-            h(0.3em)
+          })
+        )
+
+        // Right-aligned page counter
+        place(
+          right + top,
+          dy: 0.2em,
+          text(size: 11pt, fill: astate-gray, {
             str(page-num - 1) + " / " + str(total-pages - 1)
           })
         )
