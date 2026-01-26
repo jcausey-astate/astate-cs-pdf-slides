@@ -1,6 +1,6 @@
 # A-State CS PDF Slides
 
-A Quarto extension for creating PDF presentation slides with an Arkansas State University color theme.  The extension uses Typst to produce the PDF.  I use it for lecture slides in my Computer Science courses.
+A [Quarto](https://quarto.org) theme extension for creating PDF presentation slides with an Arkansas State University color theme.  The extension uses Typst to produce the PDF.  I use it for lecture slides in my Computer Science courses.
 
 
 ## Installation
