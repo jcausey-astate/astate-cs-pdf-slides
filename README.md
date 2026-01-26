@@ -18,7 +18,7 @@ Create a `.qmd` file with the extension format:
 title:  "Presentation Title"
 course: "CS 1234"
 date:   "2026-01-26"
-format: astate-cs-pdf-slides-typst
+format: astate-cs-pdf-typst
 ---
 
 # First Slide
