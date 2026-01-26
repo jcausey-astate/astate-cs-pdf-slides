@@ -1,0 +1,439 @@
+---
+title: "astate-cs-pdf Slide Theme"
+subtitle: "Comprehensive Feature Test"
+decktitle: "Example Slides"
+course: "CS 1234 Example Course"
+date: "January 2026"
+format: astate-cs-pdf-typst
+---
+
+# Text Emphasis & Key Terms
+
+## Regular Emphasis
+
+This is regular text with *italic* and **bold** formatting.
+
+This is _italic_ with underscores and __bold__ with double underscores.
+
+## Key Terms (Bold + Wine Color)
+
+Key terms use `**_text_**` which appears in bold wine/red color:
+
+**_algorithm_**, **_data structure_**, **_recursion_**, **_variable_**
+
+Also works inline: The **_time complexity_** of this algorithm is important.
+
+- Regular bullet
+- *Italic bullet*
+- **Bold bullet**
+- **_Key term bullet_**
+
+## Order Matters for Key Terms
+
+**_This is strong-emph (key term)_** - should be RED
+
+_**This is emph-strong (NOT key term)**_ - should be italic bold, NOT red
+
+Triple markers: ***either interpretation*** and ___also either___
+
+---
+
+# Styled Spans
+
+## Text Colors
+
+Apply colors to inline text:
+
+- [This text is red]{.red} (A-State scarlet)
+- [This text is green]{.green}
+- [This text is blue]{.blue}
+- [This text is orange]{.orange}
+- [This text is purple]{.purple}
+- [This text is grey]{.grey}
+- [This text is yellow]{.yellow}
+
+Inline usage: Important [red warning]{.red} in a sentence.
+
+---
+
+## Highlighted Text
+
+Background highlights for emphasis:
+
+- [Highlighted in red]{.highlight-red}
+- [Highlighted in green]{.highlight-green}
+- [Highlighted in blue]{.highlight-blue}
+- [Highlighted in orange]{.highlight-orange}
+- [Highlighted in purple]{.highlight-purple}
+- [Highlighted in grey]{.highlight-grey}
+- [Highlighted in yellow]{.highlight-yellow}
+
+Inline: Note this [important detail]{.highlight-yellow} in the text.
+
+---
+
+## Key Term Spans
+
+You can also use explicit span syntax:
+
+- [algorithm]{.term} using `.term` class
+- [data structure]{.keyterm} using `.keyterm` class (synonym)
+
+These produce the same result as `**_key term_**`.
+
+---
+
+# Definition Lists
+
+Terms in definition lists are automatically styled as key terms:
+
+Algorithm
+: A step-by-step procedure for solving a problem or accomplishing a task.
+
+Data Structure
+: A specialized format for organizing, processing, and storing data.
+
+Recursion
+: A programming technique where a function calls itself to solve smaller instances of the same problem.
+
+Time Complexity
+: A measure of how the runtime of an algorithm grows with input size.
+
+---
+
+# Blockquotes
+
+Here's some regular text before the quote.
+
+> This is a blockquote with styled formatting. It has a grey bar on the left side and proper margins. The text is italic.
+
+Here's text after the quote.
+
+## Multi-line Quote
+
+> This is a longer blockquote that spans multiple lines. It demonstrates how the grey bar extends along the entire height of the quoted content.
+>
+> This quote has multiple paragraphs to show how the styling handles that case.
+
+Back to normal content.
+
+---
+
+# Footnotes
+
+This slide demonstrates footnotes^[This is a simple footnote with some text.].
+
+Multiple footnotes in one slide^[First footnote.] with different references^[Second footnote.].
+
+Academic citations^[Smith, J. (2025). *A Study of Footnotes*. Journal of Typography, 42(3), 123-145.] work well.
+
+Longer explanations^[This is a longer footnote that contains more detailed information. It spans multiple lines when rendered. The footnote styling makes text 80% of normal size.] are also supported.
+
+---
+
+# Lists
+
+## Unordered Lists
+
+- First item
+- Second item with **bold**
+- Third item with *italic*
+- Fourth item with **_key term_**
+
+## Nested Lists
+
+- Top level item
+  - Nested item 1
+  - Nested item 2
+    - Deep nested item
+- Back to top level
+
+---
+
+## Ordered Lists
+
+1. First step
+2. Second step with **emphasis**
+3. Third step with **_key term_**
+4. Final step
+
+## Lists with Footnotes
+
+- First item with a footnote^[Explanation for first item.]
+- Second item with a footnote^[Explanation for second item.]
+- Third item^[Another helpful note.]
+
+---
+
+# Multi-Column Layouts
+
+## Equal Width Columns
+
+::: {.columns}
+::: {.column width="50%"}
+### Left Column
+
+- First bullet
+- Second bullet
+- Third bullet
+
+Text in the left column.
+:::
+
+::: {.column width="50%"}
+### Right Column
+
+- Different content
+- More items
+- Final point
+
+Text in the right column.
+:::
+:::
+
+---
+
+## Unequal Width Columns
+
+::: {.columns}
+::: {.column width="40%"}
+### Narrow (40%)
+
+This column takes up less space.
+
+- Shorter lists
+- Less content
+:::
+
+::: {.column width="60%"}
+### Wide (60%)
+
+This column has more room for content.
+
+- More extensive bullet points
+- Additional details
+- Even more content
+- And another point
+:::
+:::
+
+---
+
+## Three Column Layout
+
+::: {.columns}
+::: {.column width="33%"}
+### Column 1
+
+First third of content.
+
+- Item A
+- Item B
+:::
+
+::: {.column width="33%"}
+### Column 2
+
+Middle third.
+
+- Item C
+- Item D
+:::
+
+::: {.column width="34%"}
+### Column 3
+
+Final third.
+
+- Item E
+- Item F
+:::
+:::
+
+---
+
+# Callout Boxes
+
+## Default Callout Styles
+
+::: {.callout-note}
+## Note
+This is a note callout with default appearance.
+:::
+
+::: {.callout-tip}
+## Pro Tip
+This is a tip callout to highlight helpful information.
+:::
+
+---
+
+## More Callout Types
+
+::: {.callout-important}
+This is an important callout without a custom title.
+:::
+
+::: {.callout-warning}
+## Warning
+Be careful when modifying production code!
+:::
+
+::: {.callout-caution}
+## Caution
+This operation cannot be undone.
+:::
+
+---
+
+## Callout Appearance Styles
+
+::: {.callout-note appearance="simple"}
+## Simple Style
+This callout uses simple appearance with no header section.
+:::
+
+::: {.callout-tip appearance="minimal"}
+## Minimal Style
+This callout uses minimal appearance with only a left border.
+:::
+
+::: {.callout-important icon="false"}
+## No Icon
+This callout has the icon disabled.
+:::
+
+---
+
+# Styled Divs
+
+## Smaller Text
+
+::: {.smaller}
+This text is smaller than normal, useful for fitting more content on a slide.
+
+- Bullet point one
+- Bullet point two
+- Bullet point three
+
+You can include multiple paragraphs in smaller blocks.
+:::
+
+## Aside Content
+
+::: aside
+This is an aside block with supplementary information that appears in a distinct style.
+:::
+
+Main content continues here with normal formatting.
+
+---
+
+# Code Blocks
+
+Inline code: `variable = value`
+
+Code block with syntax highlighting:
+
+```python
+def factorial(n):
+    """Calculate factorial recursively."""
+    if n <= 1:
+        return 1
+    return n * factorial(n - 1)
+
+# Test the function
+result = factorial(5)
+print(f"5! = {result}")
+```
+
+Technical detail with footnote^[In Python 3.x, this behavior differs from Python 2.x.].
+
+---
+
+# Combined Features
+
+## Columns with Callouts
+
+::: {.columns}
+::: {.column width="50%"}
+::: {.callout-note}
+## Left Side
+Important information on the left.
+:::
+:::
+
+::: {.column width="50%"}
+::: {.callout-tip}
+## Right Side
+Helpful tip on the right.
+:::
+:::
+:::
+
+---
+
+## Mixed Content Example
+
+::: {.columns}
+::: {.column width="60%"}
+### Main Content
+
+Regular text with **_key terms_** highlighted.
+
+Definition list in a column:
+
+Algorithm
+: Step-by-step procedure
+
+::: {.smaller}
+- Detailed sub-point 1
+- Detailed sub-point 2
+:::
+:::
+
+::: {.column width="40%"}
+::: {.callout-warning appearance="simple"}
+## Watch Out
+Test thoroughly!
+:::
+
+> A quote in the right column.
+:::
+:::
+
+---
+
+## Everything Together
+
+This slide combines multiple features:
+
+- **Bold** and *italic* text
+- **_Key terms_** in wine/red color
+- [Colored text]{.blue} and [highlighted text]{.highlight-yellow}
+- Inline code: `x = 42`
+- A footnote^[This is a footnote.]
+
+> Some blockquote text.
+
+::: {.smaller}
+Some smaller text for additional details.
+:::
+
+---
+
+# Summary
+
+This test document demonstrates all major features:
+
+1. Text emphasis (bold, italic, **_key terms_**)
+2. [Colored]{.red} and [highlighted]{.highlight-green} spans
+3. Definition lists with auto-styled terms
+4. Blockquotes with styling
+5. Footnotes at smaller size
+6. Multi-column layouts (equal and unequal widths)
+7. Callout boxes (multiple types and styles)
+8. Styled divs (`.smaller`, `.aside`)
+9. Combined and nested features
+
+All features work with standard Quarto/Markdown syntax plus custom extensions.
