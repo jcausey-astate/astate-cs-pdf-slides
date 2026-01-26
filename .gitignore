@@ -2,6 +2,6 @@
 **/__MACOS__
 **/*.bak
 **/~*
-**/.vscode
+**/.*
+/*.md
 /.luarc.json
-**/TODO.md
