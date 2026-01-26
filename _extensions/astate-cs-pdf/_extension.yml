@@ -1,4 +1,4 @@
-title: A-State CS Typst PDF Presentation
+title: A-State CS PDF Slides via Quarto and Typst
 author: Jason L. Causey
 version: 1.0.0
 quarto-required: ">=1.4.0"
