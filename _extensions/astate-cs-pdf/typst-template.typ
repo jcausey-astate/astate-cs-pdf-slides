@@ -173,6 +173,7 @@
         inset: (x: 2.5em, top: 0.4em, bottom: 0.4em),
         {
           set text(fill: white, weight: "bold")
+          show math.equation: set text(fill: white, size: 1.6em)
           set align(left)
           text(size: 1.1em, it.body)
         }
