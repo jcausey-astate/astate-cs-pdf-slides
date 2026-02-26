@@ -102,12 +102,16 @@
   // Use sans-serif font
   set text(
     font: "Latin Modern Sans",
-    size: 21pt,
+    size: 17.5pt,
     fill: astate-black,
   )
 
   // Math styling - use serif for math
-  show math.equation: set text(font: "Latin Modern Math")
+  show math.equation: set text(
+    font: "Latin Modern Math",
+    size: 15.5pt,
+    fill: astate-black,
+  )
 
   // Footnote styling - make text smaller
   show footnote.entry: set text(size: 0.65em)
