@@ -73,6 +73,35 @@ Add background highlights to text:
 
 Available highlights: `.highlight-red`, `.highlight-green`, `.highlight-blue`, `.highlight-orange`, `.highlight-purple`, `.highlight-grey`, `.highlight-yellow`
 
+### Images and Figures
+
+Images are automatically centered and sized to fill the full available slide width by default.
+
+**Alignment** — apply a positioning class to the image:
+
+```markdown
+![](chart.png){.left}
+![](chart.png){.center}
+![](chart.png){.right}
+```
+
+**Size** — apply a size class, or set `width` explicitly:
+
+| Class        | Width          |
+| ------------ | -------------- |
+| `.full`      | 100% (default) |
+| `.large`     | 80%            |
+| `.medium`    | 60%            |
+| `.small`     | 40%            |
+| `.tiny`      | 25%            |
+| `width="N%"` | custom         |
+
+```markdown
+![](chart.png){.medium}
+![](chart.png){.right .small}
+![](chart.png){width="55%"}
+```
+
 ### Additional Styles for Quarto Fenced Divs
 
 - `.smaller` - Reduce text size for dense content
