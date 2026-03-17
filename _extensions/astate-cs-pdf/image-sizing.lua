@@ -27,14 +27,31 @@ end
 
 -- Returns width cap and height cap as Typst dimension strings.
 local function get_size(elem)
-  -- Explicit width= attribute takes precedence for width; height stays full cap.
   local w = elem.attributes['width']
-  if w then
-    if w:match('^%d+%%$') then
-      return w, CONTENT_HEIGHT_CAP
-    elseif w:match('^%d+$') then
-      return w .. '%', CONTENT_HEIGHT_CAP
+  local h = elem.attributes['height']
+  local width_out, height_out
+
+  -- Parse a single dimension value: percentage, bare number (->%), or absolute (e.g. 1in, 2.5cm).
+  local function parse_dim(v)
+    if not v then return nil end
+    if v:match('^%d+%%$') then
+      return v
+    elseif v:match('^%d+$') then
+      return v .. '%'
+    elseif v:match('^%d*%.?%d+%a+$') then
+      -- Absolute dimension with unit (in, cm, mm, pt, em, px, …) — pass through to Typst as-is.
+      return v
     end
+    return nil
+  end
+
+  width_out  = parse_dim(w)
+  height_out = parse_dim(h)
+
+  -- If the user specified explicit dimension(s), honour them exactly.
+  -- Use "auto" for whichever axis was not specified so Typst preserves aspect ratio.
+  if width_out or height_out then
+    return width_out or 'auto', height_out or 'auto'
   end
 
   -- Named size classes scale both dimensions proportionally.
