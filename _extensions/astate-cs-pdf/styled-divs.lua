@@ -23,5 +23,15 @@ function Div(el)
     return blocks
   end
 
+  -- Handle .footnotes class - unnumbered note placed at slide bottom above
+  -- any numbered footnotes, styled to match footnote entries
+  if el.classes:includes('footnotes') then
+    local blocks = List:new()
+    blocks:insert(pandoc.RawBlock('typst', '#slide-note[\n'))
+    blocks:extend(el.content)
+    blocks:insert(pandoc.RawBlock('typst', '\n]\n'))
+    return blocks
+  end
+
   return el
 end

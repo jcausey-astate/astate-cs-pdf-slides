@@ -40,6 +40,43 @@
   })
 }
 
+// Counter used by the show footnote.entry rule to detect the first entry on
+// each page.  Reset to 0 in the page header so the count restarts per slide.
+#let slide-note-fn-counter = counter("slide-note-fn-on-page")
+
+// slide-note: places an unnumbered note at the bottom of the slide, styled to
+// match footnote entries, appearing above any numbered footnotes on the page.
+//
+// Rendering strategy:
+//   - The body is emitted as a metadata element so it can be queried by page
+//     regardless of source order relative to any footnote calls.
+//   - When numbered footnotes coexist, the show footnote.entry rule (below)
+//     prepends the slide-note above the first entry with a single separator.
+//   - When no numbered footnotes exist, place(bottom + left) renders it.
+#let slide-note(body) = {
+  [#metadata(body)<slide-note>]
+
+  context {
+    let loc = here()
+    let fn-count = query(footnote.entry).filter(e => e.location().page() == loc.page()).len()
+    if fn-count == 0 {
+      let notes = query(<slide-note>).filter(e => e.location().page() == loc.page())
+      if notes.len() > 0 {
+        place(
+          bottom + left,
+          block(
+            width: 100%,
+            {
+              line(length: 30%, stroke: 0.5pt + luma(150))
+              pad(left: 0.585em, text(size: 0.65em, notes.last().value))
+            }
+          )
+        )
+      }
+    }
+  }
+}
+
 // Callout box function (matches Quarto's built-in Typst callout signature)
 // Styled for A-State CS presentations
 #let callout(
@@ -97,6 +134,7 @@
     fill: astate-white,
     margin: (top: 3em, bottom: 1.4em, x: 2em),
     numbering: none,  // Disable default page numbering
+    header: context { slide-note-fn-counter.update(0) },
   )
 
   // Use sans-serif font
@@ -113,8 +151,34 @@
     fill: astate-black,
   )
 
-  // Footnote styling - make text smaller
-  show footnote.entry: set text(size: 0.65em)
+  // Footnote styling.
+  // The built-in separator is disabled; instead, the show rule below renders a
+  // separator line before the first entry on each page.  When a slide-note
+  // exists on the same page, it is rendered between the separator line and the
+  // first numbered entry, producing a single visual divider for both kinds.
+  set footnote.entry(separator: none)
+  show footnote.entry: it => {
+    context {
+      let c = slide-note-fn-counter.get().first()
+      if c == 0 {
+        // First footnote entry on this page — prepend separator (and slide-note
+        // if present).
+        let loc = here()
+        let notes = query(<slide-note>).filter(e => e.location().page() == loc.page())
+        if notes.len() > 0 {
+          block(width: 100%, above: 0.3em, below: 0.2em, {
+            line(length: 30%, stroke: 0.5pt + luma(150))
+            pad(left: 0.585em, text(size: 0.65em, notes.last().value))
+          })
+        } else {
+          block(above: 0.3em, line(length: 30%, stroke: 0.5pt + luma(150)))
+        }
+      }
+      slide-note-fn-counter.step()
+    }
+    set text(size: 0.65em)
+    it
+  }
 
   // Paragraph settings
   set par(
@@ -230,7 +294,7 @@
       fill: astate-white,
       margin: (top: 3em, bottom: 3em, x: 2em),
       numbering: none,
-      header: none,
+      header: context { slide-note-fn-counter.update(0) },
     )
   }
 

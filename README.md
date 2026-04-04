@@ -106,6 +106,17 @@ Images are automatically centered and sized to fill the full available slide wid
 
 - `.smaller` - Reduce text size for dense content
 - `.aside` - Supplementary information styling
+- `.footnotes` - Unnumbered note placed at the bottom of the slide, styled to match reference-based footnotes
+
+**Slide notes** (`{.footnotes}`) appear at the bottom of the slide without requiring an in-text marker:
+
+```markdown
+::: {.footnotes}
+Source: Smith (2025). Adapted for classroom use.
+:::
+```
+
+When both `.footnotes` and numbered footnotes appear on the same slide, the unnumbered note appears above the numbered ones and they do not interfere with each other.
 
 ## Metadata Fields
 

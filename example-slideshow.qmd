@@ -131,6 +131,28 @@ Longer explanations^[This is a longer footnote that contains more detailed infor
 
 ---
 
+# Slide Notes (Unnumbered)
+
+This slide has a `.footnotes` div but no numbered footnotes.
+
+::: {.footnotes}
+This is a slide note — no in-text marker needed. It appears at the bottom of the slide, styled like a footnote.
+:::
+
+---
+
+# Slide Notes + Numbered Footnotes
+
+This slide has both kinds^[This is a numbered footnote.].
+
+::: {.footnotes}
+This unnumbered note should appear above the numbered footnote below it.
+:::
+
+Content continues here normally.
+
+---
+
 # Lists
 
 ## Unordered Lists
