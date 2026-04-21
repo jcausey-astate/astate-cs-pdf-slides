@@ -151,6 +151,9 @@
     fill: astate-black,
   )
 
+  // Figure caption styling - reduce size relative to body text
+  show figure.caption: set text(size: 0.75em)
+
   // Footnote styling.
   // The built-in separator is disabled; instead, the show rule below renders a
   // separator line before the first entry on each page.  When a slide-note

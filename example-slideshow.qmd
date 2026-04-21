@@ -187,6 +187,12 @@ Content continues here normally.
 
 ---
 
+## Figures
+
+![This is a figure caption.  Notice the drop in rainfall in summer.](example-figure.jpg){width=3.5in}
+
+---
+
 # Multi-Column Layouts
 
 ## Equal Width Columns
